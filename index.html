@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Brian Loriga Portfolio</title>
+
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Brian Loriga Web Developer Portfolio">
+    <meta name="keywords" content="Brian Loriga, Web Developer, Wordpress Developer, Brian Loriga Portfolio">
+    <meta name="author" content="Brian Loriga">
+
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Styles-->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+    <link rel="stylesheet" media="screen" href="assets/vendor/swiper/swiper-bundle.min.css"/>
+
+    <!-- Main Theme Styles -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Page loading styles -->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .dark-mode .page-loading {
+        background-color: #0b0f19;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #9397ad;
+      }
+      .dark-mode .page-loading-inner > span {
+        color: #fff;
+        opacity: .6;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #b4b7c9;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      .dark-mode .page-spinner {
+        border-color: rgba(255,255,255,.4);
+        border-right-color: transparent;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+      let mode = window.localStorage.getItem('mode'),
+          root = document.getElementsByTagName('html')[0];
+      if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+      } else {
+        root.classList.remove('dark-mode');
+      }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 1000);
+        };
+      })();
+    </script>
+  </head>
+
+
+  <!-- Body -->
+  <body>
+    
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    
+
+    <!-- Page wrapper for sticky footer -->
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+
+
+      <!-- Navbar -->
+      <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
+      <header class="header navbar navbar-expand-lg bg-light shadow-sm fixed-top">
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <img src="assets/favicon/android-chrome-192x192.png" width="47" alt="Brian Loriga">
+               
+          </a>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="#resume" class="nav-link" data-scroll data-scroll-offset="70">Resume</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#projects" class="nav-link" data-scroll data-scroll-offset="70">Wordpress Projects</a>
+                </li>
+                                <li class="nav-item">
+                  <a href="#skills" class="nav-link" data-scroll data-scroll-offset="70">Skillsets</a>
+                </li>
+              </ul>
+            </div>
+            <div class="offcanvas-header border-top">
+              <a href="https://themes.getbootstrap.com/product/silicon-business-technology-template-ui-kit/" class="btn btn-primary w-100" target="_blank" rel="noopener">
+                <i class="bx bx-cart fs-4 lh-1 me-1"></i>
+                &nbsp;Buy now
+              </a>
+            </div>      
+          </div>
+          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+            <input type="checkbox" class="form-check-input" id="theme-mode">
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+          </div>
+      
+        </div>
+      </header>
+
+
+      <!-- Hero -->
+      <!-- Empty row with 50px height -->
+<div style="height: 150px;"></div> 
+      <section class="dark-mode vh-100 bg-repeat-0 bg-position-center bg-size-cover overflow-hidden" style="background-image: url(assets/img/landing/intro/hero/bg.jpg);">
+        <div class="container vh-100">
+          <div class="row flex-nowrap vh-100">
+            <div class="col-lg-4 col-md-5 d-flex flex-column text-center text-md-start py-5">
+              <h1 class="display-3 mt-auto mb-4">Brian Loriga</h1>
+              <p class="lead text-light opacity-70 pb-5 mb-0 mb-md-3">Web Developer /<br class="d-none d-md-inline"> Marketing Consultant</p>
+              <h6>This portfolio site was built using HTML, Java-Script, & Custom CSS from Bootstrap</h6>
+              <p>I am a passionate developer that looks forward to new challenges and continued growth in my field. I have been a WordPress Developer for 10 years now and have worked on well over 40 websites with ranging budgets and complexity. Over the years I have expanded my knowledge and skillset to include HTML, CSS, & Java-Script. </p>
+              <br>
+              <p>I am familiar with WordPress themes, plugins, core functionality, and customization. I have developed multiple E-Commerce websites and even online learning platforms through WordPress</p>
+              <br>
+              <p>I have a strong work ethic and believe in transparency with my clients and peers. Over the years I have established a large connection of supporting developers that can assist me when I run into a problem that I can not solve myself.</p>
+              <div class="position-relative d-flex align-items-center justify-content-center justify-content-md-start mb-md-4 mb-lg-5 mt-auto">
+                <div class="btn btn-icon btn-secondary rounded-circle">
+                  <i class="bx bx-chevron-down"></i>
+                </div>
+                <a href="#projects" class="nav-link stretched-link text-light fw-normal opacity-80 py-2 px-3" data-scroll data-scroll-offset="70">View Recent Projects</a>
+              </div>
+            </div>
+            <div class="d-flex flex-shrink-0 align-items-start">
+              <img src="assets/img/landing/intro/hero/screens01.png" class="rellax d-block flex-shrink-0 mt-n5" width="486" height="1390" alt="Screens" data-rellax-speed="4" data-disable-parallax-down="md">
+              <img src="assets/img/landing/intro/hero/screens02.png" class="rellax d-block flex-shrink-0 mt-5" width="486" height="1470" alt="Screens" data-rellax-speed="-4" data-disable-parallax-down="md">
+              <img src="assets/img/landing/intro/hero/screens03.png" class="rellax d-block flex-shrink-0" width="486" height="1480" alt="Screens" data-rellax-speed="4" data-disable-parallax-down="md">
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Main features (Slider on narrow scrreens) -->
+      <section class="container pt-5">
+        <div class="swiper mt-n3 mt-md-0 pt-md-4 pt-lg-5 mx-n2" data-swiper-options='{
+          "slidesPerView": 1,
+          "spaceBetween": 8,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "clickable": true
+          },
+          "navigation": {
+            "prevEl": "#prev-news",
+            "nextEl": "#next-news"
+          },
+          "breakpoints": {
+            "500": {
+              "slidesPerView": 2
+            },
+            "700": {
+              "slidesPerView": 3
+            },
+            "1000": {
+              "slidesPerView": 4
+            }
+          }
+        }'>
+          <div class="swiper-wrapper">
+
+            
+            
+      
+          <!-- Pagination (bullets) -->
+          <div class="swiper-pagination position-relative bottom-0 mt-2"></div>
+        </div>
+      </section>
+
+
+      <!-- Landings (Grid) -->
+      <section id="projects" class="container text-center pt-5 mt-2 mt-md-4 mt-lg-5">
+        <h2 class="h1 pt-2 pt-lg-0">Recent Projects</h2>
+        <p class="fs-lg pb-2 pb-md-3 pb-lg-0 mb-4 mb-lg-5">Below are some of my most recent projects. I have chosen to highlight these as each showcases a specific intent.</p>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+          <div class="col card-hover shadow-none bg-none position-relative mb-4 mb-lg-5">
+            <img src="assets/img/landing/intro/landings/RapidInterivewsshowcase.jpg" class="b-block border rounded-3 shadow-sm" alt="Rapid Interviews">
+            <h3 class="h5 mt-4 mb-3 mb-lg-0">
+              <a href="rapidinterviews-project.html" class="stretched-link">Rapid Interviews</a>
+            </h3>
+            <p>A job board that brings in millions of jobs from partners like ZipRecruiter, Appcast, Careerbuilder, Monster, & More!</p>
+          </div>
+          <div class="col card-hover shadow-none bg-none position-relative mb-4 mb-lg-5">
+            <img src="assets/img/landing/intro/landings/Aiemelanding.jpg" class="b-block border rounded-3 shadow-sm" alt="Mobile App Showcase v.2">
+            <h3 class="h5 mt-4 mb-3 mb-lg-0">
+              <a href="aime-project.html" class="stretched-link">Aieme</a>
+            </h3>
+            <p>An online medical certification company that offers virtual and in person instructor led courses as well as self paced online courses.</p>
+          </div>
+          <div class="col card-hover shadow-none bg-none position-relative mb-4 mb-lg-5">
+            <img src="assets/img/landing/intro/landings/SFCLanding.jpg" class="b-block border rounded-3 shadow-sm" alt="Mobile App Showcase v.2">
+            <h3 class="h5 mt-4 mb-3 mb-lg-0">
+              <a href="SFCA.html" class="d-flex justify-content-center align-items-center stretched-link">South Florida Construction Group</a>
+            </h3>
+            <p>(SFC Associates) is a State of Florida licensed general contractor with major emphasis on commercial interiors and project management.</p>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <!--These are addtioinal WordPress Websites-->
+      <div class="container">
+        <h3 style="text-align: center;">Additional Wordpress Websites</h3>
+        <br>
+        <div class="row justify-content-center">
+          <div class="col-sm-4 col-12">
+            <div class="list-item">
+              <ul>
+                <li><a href="https://www.fosterhandymanservices.com/">Foster Handy Man Contractors</a></li>
+              </ul>
+              <p>The highlight of this site is the ability to book an appointment directly through the website via a Squareup button, or an expanded dropdown for a request via phone or email.  </p>
+            </div>
+            <div class="list-item">
+              <ul>
+                <li><a href="https://www.ncehomes.com/">NCE homes</a></li>
+              </ul>
+              <p>This Wordpress website was redesigned to make it easier for homeowners to make contact and request a quote</p>
+            </div>
+          </div>
+          <div class="col-sm-4 col-12">
+            <div class="list-item">
+              <ul>
+                <li><a href="https://www.greenamericaglass.com/">Green America Glass</a></li>
+              </ul>
+              <p>This is a fully fleshed out Wordpress E-Commerce site along with an easily accessible user registration system. This website has an easy to use contact us system for those that need support. </p>
+            </div>
+            <div class="list-item">
+              <ul>
+                <li><a href="https://www.popcrave.com/">Pop Crave</a></li>
+              </ul>
+              <p>A social media influence site with over 180,000 followers. The website pulls in posts from Instagram and creates blog posts on the website.</p>
+            </div>
+          </div>
+          <div class="col-sm-4 col-12">
+            <div class="list-item">
+              <ul>
+                <li><a href="https://www.sparkledentalva.com/">Sparkle Dentail</a></li>
+              </ul>
+              <p>A local dentist website that uses an API powered by Practice Mojo to handle online booking through her website directly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+
+
+<!-- Empty row with 50px height -->
+<div style="height: 150px;"></div> 
+
+     
+<!--Resume Download Button & Image-->
+      <br>
+      <div id="resume" class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-4 text-md-end">
+          <a href="assets/img/documents/Brian Loriga (Web Development).docx" class="btn btn-primary">Download My Resume</a>
+        </div>
+      </div>
+      <br>
+      <div class="text-center">
+        <img src="assets/img/documents/Brian Loriga Resume.PNG" class="Resume image" width="1700">
+      </div>
+
+      <div style="height: 150px;"></div> <!-- Empty row with 50px height -->
+
+      <!-- Skillsets -->
+      <section id="skills"class="container pt-4 pb-5 py-lg-5">
+        <h2 class="h1 text-center pt-1 pt-md-3 pt-lg-4 pb-3 pb-md-4 mb-0 mb-lg-3">Technologies Used & Understood</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-lg-3 g-xl-4 pb-md-3 pb-lg-5">
+
+          <!-- Bootstrap Skillset -->
+          <div class="col">
+            <div class="card h-100 bg-transparent border-0">
+              <div class="bg-secondary rounded-3 w-auto lh-1 p-2 mt-4 ms-4 me-auto">
+                <img src="assets/Icons/Bootstrap_logo.svg.png" width="100">
+              </div>
+              <div class="card-body">
+                <h3 class="h6">Bootstrap</h3>
+                <p class="fs-sm mb-0">Use Bootstrap classes and components: Use Bootstrap classes and components to style and structure the HTML elements on the page. For example, they might use the container class to create a responsive container for the page content, the row class to create a row of columns, and the col-* classes to define the size and position of each column. I will also use pre-designed components like navigation bars, forms, buttons, and alerts to save time and ensure consistency across the website.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- HTML 5 Skillset -->
+          <div class="col">
+            <div class="card h-100 bg-transparent border-0">
+              <div class="bg-secondary rounded-3 w-auto lh-1 p-2 mt-4 ms-4 me-auto">
+                <img src="assets/Icons/HTML5_Badge.svg.png" width="90">
+              </div>
+              <div class="card-body">
+                <h3 class="h6">HTML 5</h3>
+                <p class="fs-sm mb-0">Write HTML5 markup: The developer will use a text editor or an integrated development environment (IDE) to write HTML5 markup for each page of the website. This involves creating tags to define headings, paragraphs, images, links, lists, and other elements of the page.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Javascript Skillset -->
+          <div class="col">
+            <div class="card h-100 bg-transparent border-0">
+              <div class="bg-secondary rounded-3 w-auto lh-1 p-2 mt-4 ms-4 me-auto">
+                <img src="assets/Icons/Javascript-logo.png" width="170">
+              </div>
+              <div class="card-body">
+                <h3 class="h6">Java-Script</h3>
+                <p class="fs-sm mb-0">Add JavaScript code to HTML pages: I can add JavaScript code to HTML pages using the script tag, either inline or in an external file. I use JavaScript to handle user events, such as clicks and form submissions, or to manipulate the content of the page dynamically based on user actions or data inputs.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WordPress -->
+          <div class="col">
+            <div class="card h-100 bg-transparent border-0">
+              <div class="bg-secondary rounded-3 w-auto lh-1 p-2 mt-4 ms-4 me-auto">
+                <img src="assets/Icons/WordPress_blue_logo.svg.png" width="100">
+              </div>
+              <div class="card-body">
+                <h3 class="h6">WordPress</h3>
+                <p class="fs-sm mb-0">Customize functionality: WordPress offers a wide range of plugins, website builders, & themes that you can use to add functionality to your website. Plugins are like apps that you can install to extend the capabilities of WordPress. You can search and install plugins from the WordPress Plugin Directory, or purchase premium plugins from third-party providers. I can also help to create or modify any esisting theme.</p>
+              </div>
+            </div>
+          </div>
+
+          <!--GitHub-->
+          <div class="col">
+            <div class="card h-100 bg-transparent border-0">
+              <div class="bg-secondary rounded-3 w-auto lh-1 p-2 mt-4 ms-4 me-auto">
+                <img src="assets/Icons/Git-Icon-1788C.png" width="100">
+              </div>
+              <div class="card-body">
+                <h3 class="h6">GitHub</h3>
+                <p class="fs-sm mb-0">I can update and maintain your website by making changes to the files in your repository, committing your changes, and pushing them to the GitHub server. You can also collaborate with other developers by sharing your repository with them and working on the code together.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CSS -->
+          <div class="col">
+            <div class="card h-100 bg-transparent border-0">
+              <div class="bg-secondary rounded-3 w-auto lh-1 p-2 mt-4 ms-4 me-auto">
+                <img src="assets/Icons/CSS3_logo.svg.png" width="100">
+              </div>
+              <div class="card-body">
+                <h3 class="h6">CSS</h3>
+                <p class="fs-sm mb-0">Style the HTML elements: Once you have linked to the CSS file, you can start styling the HTML elements on your page. Use CSS selectors to target specific elements and apply styles such as colors, fonts, backgrounds, margins, padding, and borders. Use CSS rules to define the properties and values of the styles.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photoshop -->
+          <div class="col">
+            <div class="card h-100 bg-transparent border-0">
+              <div class="bg-secondary rounded-3 w-auto lh-1 p-2 mt-4 ms-4 me-auto">
+                <img src="assets/Icons/Photoshop_2007_logo.svg" width="100">
+              </div>
+              <div class="card-body">
+                <h3 class="h6">Photoshop</h3>
+                <p class="fs-sm mb-0">Apply effects and filters: To enhance the visual impact of your design, you can apply effects and filters in Photoshop. Effects can add shadows, glows, or reflections to your elements, while filters can adjust the colors, sharpness, or texture of your images.</p>
+              </div>
+            </div>
+          </div>     
+        </div>
+      </section>
+    </main>
+
+
+
+
+
+    <!-- Back to top button -->
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>
+
+
+    <!-- Vendor Scripts -->
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="assets/vendor/rellax/rellax.min.js"></script>
+    <script src="assets/vendor/@lottiefiles/lottie-player/dist/lottie-player.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main Theme Script -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+</html>
